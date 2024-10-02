@@ -17,7 +17,6 @@ type InputFieldProps = {
   control: Control;
   placeholderAddon?: boolean;
 };
-
 const InputField: React.FC<InputFieldProps> = ({
   field,
   disabled = false,
