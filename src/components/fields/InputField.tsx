@@ -1,6 +1,6 @@
 import React from "react";
 import { Control, Controller } from "react-hook-form";
-
+import "./fields.css";
 // Define types for the props
 type Field = {
   name: string;
@@ -8,6 +8,7 @@ type Field = {
   required?: boolean;
   maxWidth?: string;
   placeholder?: string;
+  errorMessage?: string;
   icon?: React.ReactNode;
 };
 
@@ -21,18 +22,21 @@ const InputField: React.FC<InputFieldProps> = ({
   field,
   disabled = false,
   control,
-  placeholderAddon = true,
 }) => (
   <Controller
     name={field.name}
     control={control}
-    rules={field.required ? { required: "This field is required" } : {}}
+    rules={
+      field.required
+        ? { required: field.errorMessage || "This field is required" }
+        : {}
+    }
     render={({ field: controllerField, fieldState: { error } }) => (
-      <div style={{ maxWidth: field.maxWidth || "100%", marginBottom: "1rem" }}>
-        <label
-          htmlFor={field.name}
-          style={{ display: "block", marginBottom: "0.5rem" }}
-        >
+      <div
+        style={{ maxWidth: field.maxWidth || "100%" }}
+        className="input-container"
+      >
+        <label htmlFor={field.name} className="input-container-label">
           {field.icon && (
             <span style={{ marginRight: "0.5rem" }}>{field.icon}</span>
           )}
@@ -44,16 +48,9 @@ const InputField: React.FC<InputFieldProps> = ({
           onChange={controllerField.onChange}
           onBlur={controllerField.onBlur}
           disabled={disabled}
-          placeholder={placeholderAddon ? undefined : field.placeholder}
-          style={{
-            width: "100%",
-            padding: "0.5rem",
-            borderColor: error ? "red" : "#ccc",
-          }}
+          placeholder={field.placeholder}
+          className={`${error && "input-error"} input-style`}
         />
-        {placeholderAddon && field.placeholder && (
-          <span style={{ marginLeft: "0.5rem" }}>{field.placeholder}</span>
-        )}
         {error && (
           <span style={{ color: "red", fontSize: "0.875rem" }}>
             {error.message}

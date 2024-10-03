@@ -1,0 +1,45 @@
+:root {
+  --pr1: #00bdbf;
+  --pr2: #00565a;
+  --pr3: #a3ada2;
+  --pr4: #8ec5a3;
+  --sc1: #f3f9f9;
+  --sc2: #e1e9e8;
+  --sc3: #b5b5b5;
+  --sc4: #7d8f90;
+  --sc5: #f9f9f9;
+  --sc6: #49696b;
+
+  --color-grey-0: #fff;
+  --color-grey-50: #f9fafb;
+  --color-grey-100: #f3f4f6;
+  --color-grey-200: #e5e7eb;
+  --color-grey-300: #d1d5db;
+  --color-grey-400: #9ca3af;
+  --color-grey-500: #6b7280;
+  --color-grey-600: #4b5563;
+  --color-grey-700: #374151;
+  --color-grey-800: #1f2937;
+  --color-grey-900: #111827;
+  --color-grey-1000: #000;
+
+  --gradient-1: #fff;
+  --gradient-2: #dff3f4;
+
+  --test: orangered;
+
+  --text: #004f53;
+  --text-light: #004f53;
+  --font-weight: 500;
+  --color-label: #fff;
+  --color-input-text: #fff;
+
+  --pr-btn: linear-gradient(90deg, #009698 0%, #00bbbd 100%);
+  --bg-button: rgba(255, 255, 255, 1);
+  --bg-switch: linear-gradient(270deg, #e7fbfc 0%, #cdf1f1 100%);
+
+  --border-input: 1px solid var(--sc2);
+  --border-input-focus: 1px solid #cbd1d1;
+
+  --input-bg: #131315;
+}

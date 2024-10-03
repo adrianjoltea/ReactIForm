@@ -1,6 +1,6 @@
 {
   "name": "react-i-form",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -22,6 +22,7 @@
     "rollup-plugin-dts": "^6.1.1",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-postcss": "^4.0.2",
+    "sass-embedded": "^1.79.4",
     "tslib": "^2.6.3",
     "typescript": "^5.5.3"
   },
