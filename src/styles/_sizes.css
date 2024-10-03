@@ -1,0 +1,36 @@
+:root {
+  --h1-size: 70px;
+  --h2-size: 40px;
+  --h4-size: 28px;
+
+  --p-size-xhg: 26px;
+  --p-size-hg: 24px;
+  --p-size-md: 20px;
+  --p-size-sm: 18px;
+
+  --font-button-small: 22px;
+}
+
+html {
+  font-family: "Poppins", sans-serif;
+}
+
+:root {
+  --padding-sm: 5px;
+  --padding-md: 15px;
+  --padding-lg: 10px;
+  --padding-hg: 20px;
+  --padding-xhg: 50px;
+  --padding-xxhg: 100px;
+
+  --gap-sm: 10px;
+  --gap-md: 15px;
+  --gap-lg: 20px;
+  --gap-hg: 30px;
+  --gap-xhg: 40px;
+
+  --margin-sm: 10px;
+  --margin-md: 20px;
+  --margin-lg: 40px;
+  --margin-hg: 60px;
+}

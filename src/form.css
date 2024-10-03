@@ -1,0 +1,26 @@
+.form {
+  text-align: left;
+  gap: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.button-form {
+  padding: 10px 24px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 14px;
+  user-select: none;
+}
+
+.button-primary {
+  background: linear-gradient(90deg, #05439b 0%, #216cd4 100%);
+  border: none;
+  cursor: pointer;
+  color: #ddd;
+}
+
+.buttons-container {
+  display: flex;
+  margin-top: 1rem;
+}

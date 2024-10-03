@@ -1,32 +1,40 @@
-import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
+import {
+  DefaultValues,
+  FieldValues,
+  SubmitHandler,
+  useForm,
+} from "react-hook-form";
 import RenderField from "./components/RenderField";
 
-// Define types for the props
+import "./form.css";
+import "./styles/_colors.css";
+import "./styles/_reset.css";
+import "./styles/_sizes.css";
+
 type Field = {
   name: string;
   label: string;
   type: string;
 };
 
-// Define a type for the custom form props using generics
 type CustomFormProps<T> = {
   fields: Field[];
   title: string;
   subTitle?: string;
-  onSubmit: (data: FieldValues) => void; // Use the generic type T
+  onSubmit: (data: FieldValues) => void;
   backButton?: boolean;
   backButtonLocation?: string;
   requiredFields?: boolean;
   buttonText?: string;
   forSettings?: boolean;
-  GetFormData?: (data: T) => void | null; // Use the generic type T
+  GetFormData?: (data: T) => void | null;
   customButton?: React.ReactNode | null;
   marginTop?: string;
   marginTopForm?: string;
   fontSizeTitle?: string;
   fontSizeSubtitle?: string;
   hideButtons?: boolean;
-  initialFormData?: T; // Use the generic type T
+  initialFormData?: DefaultValues<FieldValues>;
 };
 
 const CustomForm = <T,>({
@@ -44,8 +52,8 @@ const CustomForm = <T,>({
   fontSizeTitle,
   fontSizeSubtitle,
   hideButtons = false,
-}: //   initialFormData,
-CustomFormProps<T>) => {
+  initialFormData,
+}: CustomFormProps<T>) => {
   const {
     control,
     handleSubmit,
@@ -56,7 +64,7 @@ CustomFormProps<T>) => {
     formState: { isDirty, isValid },
   } = useForm({
     mode: "onChange",
-    // defaultValues: initialFormData,
+    defaultValues: initialFormData,
   });
 
   const handleBackClick = () => {
@@ -69,7 +77,7 @@ CustomFormProps<T>) => {
   };
 
   return (
-    <div style={{ marginTop }} className="form">
+    <div style={{ marginTop }} className="form-container">
       <h2 style={{ fontSize: fontSizeTitle, marginBottom: "0.25rem" }}>
         {title}
       </h2>
@@ -82,6 +90,7 @@ CustomFormProps<T>) => {
       <form
         onSubmit={handleSubmit(handleFormSubmit)}
         style={{ marginTop: marginTopForm }}
+        className="form"
       >
         {fields.map((field, i) => (
           <RenderField
@@ -93,66 +102,24 @@ CustomFormProps<T>) => {
             reset={reset}
           />
         ))}
-        {customButton ? (
-          <div>
-            <div className="flex justify-start align-middle gap-6">
-              <button
-                className={`button-settings ${
-                  requiredFields
-                    ? isValid
-                      ? "button-primary"
-                      : ""
-                    : isDirty
-                    ? "button-primary"
-                    : ""
-                }`}
-                type="submit"
-                disabled={requiredFields ? !isValid : !isDirty}
-              >
-                {buttonText}
-              </button>
-            </div>
-          </div>
-        ) : (
-          !forSettings && (
-            <div
-              className={`${backButton ? "form-buttons-back" : "form-buttons"}`}
-            >
-              {backButton && (
-                <div>
-                  <button
-                    className="button button-back"
-                    type="button"
-                    onClick={handleBackClick}
-                  >
-                    Back
-                  </button>
-                </div>
-              )}
 
-              {!hideButtons && (
-                <div>
-                  <button
-                    type="submit"
-                    className="button"
-                    disabled={requiredFields ? !isValid : !isDirty}
-                  >
-                    Next
-                  </button>
-                </div>
-              )}
-            </div>
-          )
-        )}
-        {forSettings && !customButton && (
-          <div className="settings-button">
-            <div>
-              <button type="submit" className="button">
-                Save Settings
-              </button>
-            </div>
-          </div>
-        )}
+        <div className="buttons-container">
+          <button
+            className={`button-form ${
+              requiredFields
+                ? isValid
+                  ? "button-primary"
+                  : ""
+                : isDirty
+                ? "button-primary"
+                : ""
+            }`}
+            type="submit"
+            disabled={requiredFields ? !isValid : !isDirty}
+          >
+            {buttonText}
+          </button>
+        </div>
       </form>
     </div>
   );
