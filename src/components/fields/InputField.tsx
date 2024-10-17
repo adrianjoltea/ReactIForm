@@ -1,7 +1,6 @@
 import React from "react";
 import { Control, Controller } from "react-hook-form";
 import "./fields.css";
-// Define types for the props
 type Field = {
   name: string;
   label: string;

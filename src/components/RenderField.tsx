@@ -7,12 +7,18 @@ import {
   UseFormSetValue,
 } from "react-hook-form";
 import InputField from "./fields/InputField";
+import SelectField from "./fields/SelectField";
+interface FieldOption {
+  label: string;
+  value: string | number;
+}
 
 type Field = {
   name: string;
   label: string;
   type: string;
   key?: string;
+  options: FieldOption[];
   disabled?: boolean;
   placeholderAddon?: boolean;
   fields?: Field[];
@@ -45,6 +51,14 @@ const fieldRenderer: FieldRenderer<FieldValues> = {
       key={field.label}
       disabled={field.disabled}
       placeholderAddon={field.placeholderAddon}
+    />
+  ),
+  select: (field, control) => (
+    <SelectField
+      key={field.name}
+      field={field}
+      control={control}
+      disabled={field.disabled}
     />
   ),
 };
