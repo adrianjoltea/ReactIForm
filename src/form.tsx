@@ -1,3 +1,4 @@
+// src/form.tsx
 import {
   DefaultValues,
   FieldValues,
@@ -5,17 +6,11 @@ import {
   useForm,
 } from "react-hook-form";
 import RenderField from "./components/RenderField";
-
 import "./form.css";
 import "./styles/_colors.css";
 import "./styles/_reset.css";
 import "./styles/_sizes.css";
-
-type Field = {
-  name: string;
-  label: string;
-  type: string;
-};
+import { Field } from "./types";
 
 type CustomFormProps<T> = {
   fields: Field[];
@@ -60,7 +55,6 @@ const CustomForm = <T,>({
     setValue,
     getValues,
     reset,
-    // watch,
     formState: { isDirty, isValid },
   } = useForm({
     mode: "onChange",

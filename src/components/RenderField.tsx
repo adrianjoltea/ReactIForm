@@ -1,3 +1,4 @@
+// src/components/RenderField.tsx
 import React from "react";
 import {
   Control,
@@ -6,24 +7,9 @@ import {
   UseFormReset,
   UseFormSetValue,
 } from "react-hook-form";
+import { Field, InputFieldProps, SelectFieldProps } from "../types";
 import InputField from "./fields/InputField";
 import SelectField from "./fields/SelectField";
-interface FieldOption {
-  label: string;
-  value: string | number;
-}
-
-type Field = {
-  name: string;
-  label: string;
-  type: string;
-  key?: string;
-  options: FieldOption[];
-  disabled?: boolean;
-  placeholderAddon?: boolean;
-  fields?: Field[];
-  required?: boolean;
-};
 
 type RenderFieldProps<TFormValues extends FieldValues> = {
   field: Field;
@@ -34,7 +20,7 @@ type RenderFieldProps<TFormValues extends FieldValues> = {
 };
 
 type FieldRenderer<TFormValues extends FieldValues> = {
-  [key: string]: (
+  [key in "input" | "select"]: (
     field: Field,
     control: Control<TFormValues>,
     setValue: UseFormSetValue<TFormValues>,
@@ -46,7 +32,7 @@ type FieldRenderer<TFormValues extends FieldValues> = {
 const fieldRenderer: FieldRenderer<FieldValues> = {
   input: (field, control) => (
     <InputField
-      field={field}
+      field={field as InputFieldProps}
       control={control as Control<FieldValues>}
       key={field.label}
       disabled={field.disabled}
@@ -56,7 +42,7 @@ const fieldRenderer: FieldRenderer<FieldValues> = {
   select: (field, control) => (
     <SelectField
       key={field.name}
-      field={field}
+      field={field as SelectFieldProps}
       control={control}
       disabled={field.disabled}
     />
