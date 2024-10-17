@@ -1,7 +1,7 @@
 import React from "react";
 import { Control, Controller } from "react-hook-form";
 import "./fields.css";
-type Field = {
+type FieldProps = {
   name: string;
   label: string;
   required?: boolean;
@@ -12,7 +12,7 @@ type Field = {
 };
 
 type InputFieldProps = {
-  field: Field;
+  field: FieldProps;
   disabled?: boolean;
   control: Control;
   placeholderAddon?: boolean;

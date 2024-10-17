@@ -6,7 +6,7 @@ interface FieldOption {
   value: string | number;
 }
 
-interface Field {
+interface FieldProps {
   name: string;
   label: string;
   icon?: React.ReactNode;
@@ -16,7 +16,7 @@ interface Field {
 }
 
 interface SelectFieldProps {
-  field: Field;
+  field: FieldProps;
   disabled?: boolean;
   control: Control;
 }
